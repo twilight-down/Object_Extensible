@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Dog(name) {
+            this.name = name
+        };
+        Dog.prototype.bark = function() {
+            console.log('wangwang');
+        };
+        Dog.prototype.sayName = function() {
+            console.log('The dog name is ' + this.name);
+        }
+
+        function _new(Func, ...args) {
+            // 默认创建一个实例对象（而且属于当前这个类的一个实例）
+            let obj = {};
+            // obj.__proto__=Func.prototype;
+            // IE大部分浏览器不允许我们直接操作proto
+            obj = Object.create(Func.prototype);
+
+            // 把类当作普通函数执行
+            // 执行的时候保证函数的this指向创建的实例
+            let result = Func.call(obj, ...args);
+
+            // 若客户自己返回引用值，则以自己返回的引用值为主，否则返回创建的实例
+            if ((result !== null && typeof result === 'object') || (typeof result === 'function')) {
+                return result
+            };
+            return obj;
+        }
+        let simao = new Dog('四毛')
+        simao.bark();
+        simao.sayName();
+        console.log(simao instanceof Dog);
+        console.log('------------');
+
+        let sanmao = _new(Dog, '三毛');
+        sanmao.bark();
+        sanmao.sayName();
+        console.log(sanmao instanceof Dog);
+    </script>
+
+</body>
+
+</html>

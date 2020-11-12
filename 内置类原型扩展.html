@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 数组去重
+        Array.prototype.myUnique1 = function myUnique1() {
+            return [...new Set(this)]
+        }
+        Array.prototype.myUnique2 = function myUnique2() {
+            let arr = this
+            let result = [];
+            let obj = {}
+            for (let i of arr) {
+                if (!obj[i]) {
+                    result.push(i)
+                    obj[i] = 1
+                }
+            }
+            return result
+
+        }
+        let arr = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 34, 4, 4, 4, 4, 45, 5, 5, 5, 5, 5]
+        let arr1 = arr.myUnique1()
+        let arr2 = arr.myUnique2()
+        console.log(arr1);
+        console.log(arr2);
+    </script>
+</body>
+
+</html>

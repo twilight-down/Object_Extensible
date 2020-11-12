@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 创建一个函数Function实例，直接执行就是普通函数，new执行就是一个自定义类
+        function fun() {
+            let x = 100;
+            this.num = x + 100
+
+        }
+        // f 一个对象
+        let f = new fun();
+        console.log(f);
+        console.log(f instanceof fun);
+        console.log(f instanceof Object);
+    </script>
+
+</body>
+
+</html>

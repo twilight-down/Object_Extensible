@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">click</button>
+    <script>
+        // // btn.onclick = function anoymous() {
+        // //     console.log(this);
+        // // }
+        // // this -> btn
+
+        // function anoymous() {
+        //     console.log(this);
+        // }
+        // btn.onclick = function() {
+        //         anoymous()
+        //     }
+        //     //  this ->window
+
+        // // false代表在冒泡阶段执行
+        // btn.addEventListener('click', function anoymous() {
+        //         console.log(this);
+        //     }, false)
+        //     // IE 6 7 8 
+        // btn.attachEvent('onclick', function anoymous() {
+        //     console.log(this);
+        //     // this -> window
+        // })
+        // function fn() {
+        //     console.log(this);
+        // }
+        // btn.onclick = fn.bind(window)
+        // function fn() {
+        //     console.log(this);
+        // }
+        // let obj = {
+        //     name: 'OBJ',
+        //     fn
+        // };
+        // fn();
+        // obj.fn();
+        // obj.hasOwnProperty('name')
+        // obj.__proto__.hasOwnProperty('name')
+
+        // console.log(obj.__proto__.hasOwnProperty('name'));
+        // console.log(Object.prototype.hasOwnProperty.call(obj, 'name'));
+
+
+        // console.log(obj.hasOwnProperty('name'));
+        // console.log(obj.hasOwnProperty('toString'));
+        // console.log(('fn') in obj);
+        // console.log(('toString') in obj);
+        // hasOwnProperty 用来检测某个属性名是否属于当前对象的私有属性
+        //in 用来检测是否为其属性 不论是共有的还是私有的
+    </script>
+
+    <script>
+        // function Fn() {
+        //     console.log(this);
+        //     this.pr = function() {
+        //             console.log(this);
+        //         }
+        //         // this.xxx =xxx 是给当前实例设置私有属性
+        // }
+        // Fn();
+        // let f = new Fn;
+        // f.pr();
+        // console.log('i');
+    </script>
+    <script>
+        // let obj = {
+        //     fn: () => {
+        //         console.log(this);
+        //     }
+        // }
+        // obj.fn()
+    </script>
+    <script>
+        obj = {
+            fn() {
+                console.log(this);
+            }
+        }
+        obj.fn.call(null) // -> window
+        obj.fn.call(undefined) // -> window
+        obj.fn.call(12) // -> Number(12)
+        obj.fn.call('') // -> String("")
+    </script>
+
+</body>
+
+</html>
