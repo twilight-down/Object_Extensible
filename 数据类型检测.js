@@ -3,3 +3,4 @@ if (arr.constructor === Array) {
     console.log('ok');
 }
 console.log(Object.prototype.toString.call(arr));
+console.log((12).constructor === Number);

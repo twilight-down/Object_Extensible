@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function A() {
+            this.x = 100
+        }
+        A.prototype.getX = function() {
+            console.log(this.x);
+        };
+
+        function B() {
+            this.y = 200
+        }
+
+        B.prototype.sum = function() {
+            console.log(this.y + 20);
+        }
+
+        B.prototype = new A; // 实现了继承
+
+        B.prototype.getY = function() {
+            console.log(this.y);
+        };
+
+        let b = new B;
+        b.getX()
+        b.getY()
+        b.sum()
+    </script>
+
+</body>
+
+</html>

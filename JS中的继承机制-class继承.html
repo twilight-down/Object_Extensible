@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES6创建用class
+        class A {
+            constructor() {
+                    this.x = 1000
+                }
+                // 设置到A.prototype 上的方法
+            getX() {
+                console.log(this.x);
+            }
+        }
+        class B extends A {
+            constructor() {
+                // 使用extends继承 写了constructor 就必须写super
+                // 可以把 super 理解为A.call(this)
+                super();
+                this.y = 2000
+            }
+            getY() {
+                console.log(this.y);
+            }
+        }
+        let b = new B
+    </script>
+</body>
+
+</html>

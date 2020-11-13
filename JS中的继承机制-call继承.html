@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function A() {
+            this.x = 100
+        }
+        A.prototype.getX = function() {
+            console.log(this.x);
+        };
+
+        function B() {
+            // call 继承
+            A.call(this); //this.x =100  b.x=100
+            this.y = 200
+        }
+        B.prototype.getY = function getY() {
+            console.log(this.y);
+        }
+        let b = new B
+        let a = new A
+        b.__proto__.x = 50;
+        b.getY();
+        a.getX()
+            // console.log(b);
+            // b.getY()
+            // b.getX()
+    </script>
+
+</body>
+
+</html>
