@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        #outer {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            overflow: hidden;
+            background-color: lightblue;
+        }
+        
+        #inner {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            margin: 50px auto;
+            background-color: orange;
+        }
+        
+        #center {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            margin: 50px auto;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="center"></div>
+        </div>
+    </div>
+
+</body>
+<script>
+    // window.onclick = function() {
+    //     console.log('Window');
+    // }
+    document.onclick = function(e) {
+        e.stopPropagation();
+        console.log('Body');
+    }
+    outer.onclick = function(e) {
+        // e.stopPropagation();
+        console.log('Outer');
+    }
+    inner.onclick = function(e) {
+        e.stopPropagation();
+        console.log('Inner');
+    }
+    center.onclick = function(e) {
+        e.stopPropagation();
+        console.log('Center');
+    }
+    outer.addEventListener('click', function() {
+        //false 代表在捕获阶段执行
+        // true代表在冒泡阶段执行
+    }, false)
+</script>
+
+</html>
