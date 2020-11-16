@@ -12,7 +12,7 @@ function fun(i) {
 
 for (i = 0; i < 5; i++) {
     (function(i) {
-        setTimeout(function() {
+        setTimeout(function() { //不能传参 让其构成闭包
             console.log(i);
         }, 10)
     })(i)
