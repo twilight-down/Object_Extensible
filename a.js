@@ -10,3 +10,9 @@ console.log(name);
 console.log(a);
 var b = new Person('Michael')
 console.log(b);
+
+// Tom      
+// Tom      
+// undefined
+// Michael  
+// Person { name: 'Michael' }

@@ -4,7 +4,7 @@ function add(...outerArgs) {
         return add;
     };
     add.toString = function() {
-        return outerArgs.reduce((x, y) => x + y);
+        return outerArgs.reduce((x, y) => x + y); //箭头函数加不加括号区别很大 加括号需要手动写return 不加不用写
     };
     return add
 }
@@ -18,15 +18,19 @@ let res = add(1, 2)(3)(4)(5, 6, 7, 8, 9, 10)
     // alert(res)  alert 会把输出的值转换为字符串
 console.log(res.toString());
 
-// function add1(...outa) {
-//     add1 = function(...inner) {
-//         outa.push(...inner)
+// function add1(...outArgs) {
+//     add1 = function(...innerArgs) {
+//         outArgs.push(...innerArgs)
 //         return add1
-//     };
+//     }
 //     add1.toString = function() {
-//         return outa.reduce((x, y) => { return (x + y) })
+//         return outArgs.reduce((x, y) =>
+//             x + y
+//         )
 //     }
 //     return add1
 // }
-// let res1 = add1(2, 3, 4)(1, 1)(1)
+
+// let res1 = add1(1, 2)(3)(4)(5, 6, 7, 8, 9, 10)
+//     // alert(res)  alert 会把输出的值转换为字符
 // console.log(res1.toString());

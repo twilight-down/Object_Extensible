@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        // JSONP 利用了script（img / iframe）等标签不存在跨域请求限制的原理的特点，实现跨域请求的
+        function func(result) {
+            console.log(result);
+        }
+
+        let script = document.createElement('script')
+        script.src = `url/test?lx=1&name=andy&callback=func$_=${new Data().getTime()}`
+        document.body.appendChild('script');
+
+        // 服务器端也要进行相应的处理
+    </script>
+
+
+    <!-- iframe -->
+    <!-- A -->
+    <script>
+        let count = 0
+        let iframe = document.createElement('iframe');
+        iframe.style.display = 'none'
+        iframe.src = 'urlB';
+        iframe.onload = function() {
+            if (count === 0) {
+                // 想要拿到B中的内容还需要我们把地址重新指向到同源中才可以 
+                //  proxy临时过渡页面不需要任何处理
+                iframe.src = './proxy.html';
+                count++;
+                return;
+            }
+
+            console.log(iframe.contentWindow.name);
+        }
+        document.appendChild('iframe');
+    </script>
+
+    <!-- B -->
+    <script>
+        // 服务器端返回A的信息都在window.name中存储着
+        window.name = JSON.stringify({
+            code: 0,
+            codeText: 'MESSAGE',
+            data: 'andy'
+
+        })
+    </script>
+
+    <!-- postMessage方式发送请求 -->
+    <script>
+        // 监听A发送过来的请求信息，把数据返回给客户端
+        window.onmessage = function(ev) {
+            // 客户端A发送的信息
+            console.log(ev.data);
+            // ev.source:客户端A
+            ev.source.postMessage(JSON.stringify({
+                code: 0,
+                codeText: 'ok',
+                data: ev.data + '@@@'
+            }), '*')
+        };
+    </script>
+
+    <iframe id="iframe" src="urlB" frameborder="0" style="display:none"></iframe>
+    <script>
+        // 向服务器端B发送请求
+        iframe.onload = function() {
+            // 传递给服务器的内容
+            iframe.contentWindow.postMessage('andy', 'ulrB')
+        };
+
+        // 监听B传递的信息
+        window.onmessage = function(ev) {
+            console.log(ev.data);
+        }
+    </script>
+
+
+    <script>
+        (async_ => {
+            let result = await axios.get('/test');
+            console.log(result);
+        })();
+    </script>
+
+    <script>
+        // 允许CORS跨域资源请求
+        app.use((req, res, next) => {
+            // 可以在外面单独设置解构赋值 也可以在这里面设置
+            /* const {
+                ALLOW_ORIGIN,
+                CREDENTIALS,
+                HEADERS,
+                ALLOW_METHODS
+            } = CONFIG.CORS; */
+            // 1、允许的源 ORIGIN有两种写法
+            //  "*"：允许所有的客户端发送请求但是不允许携带资源凭证（Credentials === false）安全性考虑
+            //  "xxx": 想要携带资源凭证，只能指定一个源，不能指定多个
+            res.header('Access-Control-Allow-Origin', "URL");
+            // 是否允许跨域资源携带
+            res.header('Access-Control-Allow-Credentials', true);
+            // 允许的请求头有哪些
+            res.header('Access-Control-Allow-Headers', "Content-Type,Content-Length,Authorization,Accept,X-Requested-With");
+            // 允许哪些请求方式
+            res.header('Access-Control-Allow-Methods', "PUT,POST,GET,DELETE,OPTIONS,HEAD");
+            ///2.POST请求中，在青丘发送之前，一般都会发送一个OPTIONS请求，目的是验证当前请求是否能和服务器端建立联系
+            // 能够连接再发送正式请求 
+            req.method === 'OPTIONS' ? res.send('CURRENT SERVICES SUPPORT CROSS DOMAIN REQUESTS!') : next();
+        });
+
+        app.get('/test', (req, res) => {
+            res.send(data)
+
+        })
+    </script>
+
+</body>
+
+</html>

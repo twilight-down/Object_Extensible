@@ -14,7 +14,7 @@
 
 // 方案三
 var i = 0
-Object.defineProperty(window, 'a', {
+Object.defineProperty(global, 'a', { //浏览器环境用（非严格模式） window
     get() {
         return ++i
     },
@@ -22,7 +22,6 @@ Object.defineProperty(window, 'a', {
         console.log('暂时没有用到set的方法');
     }
 });
-
 
 if (a == 1 && a == 2 & a == 3) {
     console.log('ok');

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        axios.requsest({
+                // 请求地址 URL baseURL：统一基本地址 一般用来设置地址的前缀
+                url: './data,json',
+                // 请求方式
+                methods: 'GET',
+                headers: {
+                    'Comtent-type': 'application/x-www-form-urlencoded'
+                },
+                // GET请求下问号传参的信息
+                params: {},
+                // POST请求下，请求主体传参的信息
+                data: {},
+
+            }).then(result => {
+                // 从服务器获取到的结果
+                console.log(resulr);
+
+            })
+            // config：自己配置的信息
+            // headers响应头信息
+            // request 原生的xhr Ajax对象
+            // status: 网络状态码
+            // statusText :网络状态描述
+            // data：响应主体信息
+
+
+        // 快捷请求方法 axios.get/delete/head/post/put/...axios.all
+        // .get([url],[options])
+        axios.get('url', {
+            // 配置项
+            params: {
+                lx: 0
+            },
+            // 
+            transformResponse: [function(data) {
+                // 把从服务器获取的请求主体信息进行处理，处理完再执行
+            }]
+
+        });
+        // .post([url],[data],[options])  [data]是基于请求主体的内容
+        // axios基于请求主体传递给服务器的默认是JSON格式，如果想变为 x-www/form-urlencoded格式的还需要自己处理
+        // 
+        axios.post('url', {
+            lx: 0
+        }, {
+            // 针对于post系列请求，把传递给服务器请求主体内容进行处理
+            // (函数中返回的结果就是最后基于请求主体传递给服务器的内容)
+            transformRequest: [function(data) {
+                let str = ``
+                for (let key in data) {
+                    if (!data.hasOwnProperty(key)) break;
+                    str += `&${key}=${data[key]}`
+                }
+                return str = str.substring(1)
+            }],
+            headers: {
+                'Content-type': 'x-www/form-urlencoded'
+            }
+        })
+
+        axios.all([requsest1, requsest2, requsest3]).then(result => {
+            // 所有请求都成功之后才会执行  => promise.all
+            console.log(result);
+            // 包含三个返回结果
+        })
+
+        axios.all([requsest1, requsest2, requsest3]).then(
+            // 把All返回的结果进行分别处理
+            //  也可以使用解构赋值来代替
+            axios.spred((val1, val2, val3) => {
+                console.log(val1, val2, val3);
+            }))
+    </script>
+
+</body>
+
+</html>
