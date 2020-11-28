@@ -1,0 +1,33 @@
+<html>
+
+<body>
+    <div id="ele" class="div">
+        <span id="s1" class="sp" lang="zh-cn">
+ </span>
+    </div>
+</body>
+<script type="text/javascript">
+    function exct() {
+        var oEle = document.getElementById("ele");
+        var child = oEle.children;
+        console.log("ele.children的执行结果是:");
+        for (i = 0; i < child.length; i++) {
+            console.log(child[i].tagName);
+        }
+        child = oEle.childNodes;
+        console.log("ele.childNodes的执行结果是:");
+        for (i = 0; i < child.length; i++) {
+            console.log(child[i].tagName);
+        }
+    }
+    exct();
+</script>
+<!-- 
+  children 和childNodes都是指DOM object类型的子对象
+  对于children只会获取元素节点
+  而childNodes获取节点会把文本节点也获取到
+  所以对于childNodes他的节点数量就是两个回车空文本节点和一个span元素节点
+  所以子元素节点的长度就是三
+-->
+
+</html>
