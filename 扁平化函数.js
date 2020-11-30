@@ -24,7 +24,7 @@ function compose(...funcs) {
         };
         return funcs.reduce((x, y) => {
             return typeof x === 'function' ? y(x(...args)) : y(x);
-        })
+        }, 0)
     };
 }
 
