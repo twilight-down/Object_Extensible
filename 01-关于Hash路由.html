@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>输入#号颜色为字体做相应的改变</div>
+    <script type="text/javascript">
+        window.onhashchange = function(event) {
+            console.log(event.oldURL, event.newURL)
+            let hash = location.hash.slice(1);
+            document.body.style.color = hash;
+        }
+    </script>
+
+</body>
+
+</html>
