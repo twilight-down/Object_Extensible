@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .father {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            /* 方案一定义上边框 */
+            border-top: 1px solid transparent;
+            /* 方案二为父元素定义上内边距 */
+            padding-top: 1px;
+            /* 方案三 overflow：hidden */
+            overflow: hidden;
+        }
+        
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+</body>
+
+</html>
