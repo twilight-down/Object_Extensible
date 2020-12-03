@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nth-of-type</title>
+    <style>
+        div span:nth-child(1) {
+            color: cornflowerblue;
+        }
+        
+        div span:nth-of-type(1) {
+            color: cyan;
+        }
+        
+        div span:nth-of-type(even) {
+            color: red;
+        }
+        
+        div span:nth-of-type(3n) {
+            color: darkgoldenrod;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>p标签</p>
+        <span>span1</span>
+        <span>span2</span>
+        <span>span3</span>
+    </div>
+</body>
+
+</html>

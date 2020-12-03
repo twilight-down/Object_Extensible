@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rotate</title>
+    <style>
+        img {
+            width: 300px;
+            transition: 0.5s;
+        }
+        /* 动画的过渡效果应该加在本身上，谁做动画给谁加 */
+        
+        img:hover {
+            transform: rotate(360deg);
+            transform-origin: 100px, 0;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./head.jpg" alt="">
+</body>
+
+</html>

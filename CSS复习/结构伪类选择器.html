@@ -5,6 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        ul li:first-child {
+            background-color: skyblue;
+        }
+        
+        ul li:last-child {
+            background-color: deepskyblue;
+        }
+        /* n是从1开始而不是从0开始 */
+        /* n可以是数字也可以是关键字和公式 */
+        /* 如果使用公式那么n是从0开始的 */
+        
+        ul li:nth-child(2) {
+            background-color: dodgerblue;
+        }
+        
+        ul li:nth-child(even) {
+            background-color: fuchsia;
+        }
+        
+        ul li:nth-child(odd) {
+            background-color: cornflowerblue;
+        }
+    </style>
 </head>
 
 <body>
