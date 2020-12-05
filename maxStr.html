@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = 'araaaadesa';
+
+        function maxStr(str) {
+            let max = 0;
+            let a = '';
+            let obj = {}
+            for (let i = 0; i < str.length; i++) {
+                // console.log(obj[str[i]]);
+                if (obj[str[i]]) {
+                    obj[str[i]]++;
+                } else {
+                    obj[str[i]] = 1;
+                }
+            }
+            for (let k in obj) {
+                if (obj[k] > max) {
+                    a = k;
+                }
+            }
+            return obj;
+        }
+        console.log(maxStr(str));
+    </script>
+
+</body>
+
+</html>
